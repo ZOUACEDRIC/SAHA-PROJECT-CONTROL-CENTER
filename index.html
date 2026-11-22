@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <meta name="description" content="SAHA Project Control Center — one place to track projects, priorities, blockers and delivery.">
+  <title>SAHA Project Control Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#"><span class="brand-mark">S</span><span>SAHA<span class="brand-light">WORKS</span></span></a>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="nav">
+        <button class="nav-item active" data-view="overview"><span>◫</span> Overview</button>
+        <button class="nav-item" data-view="projects"><span>▦</span> All projects</button>
+        <button class="nav-item" data-view="priorities"><span>↗</span> Priorities</button>
+        <button class="nav-item" data-view="roadmap"><span>◷</span> Roadmap</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="sidebar-note"><span class="pulse"></span><div><strong>One step at a time</strong><small>Finish · Test · Deploy · Grow</small></div></div>
+        <div class="user-mini"><div class="avatar">SC</div><div><strong>Project owner</strong><small>ZOUACEDRIC</small></div></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="crumb">Workspace <span>/</span> <strong id="crumb-view">Overview</strong></div>
+        <div class="top-actions"><span class="today" id="today"></span><button class="icon-button" id="export-btn" title="Export project data">⇩</button><button class="primary-btn" id="add-btn">＋ Add project</button></div>
+      </header>
+      <section class="page-heading">
+        <div><div class="eyebrow">YOUR OPERATIONS AT A GLANCE</div><h1 id="page-title">Good work starts with focus.</h1><p id="page-subtitle">Track what matters. Clear blockers. Ship finished products.</p></div>
+        <div class="focus-pill"><span class="pulse"></span> Focus mode <b>ON</b></div>
+      </section>
+
+      <section class="stats-grid" id="stats">
+        <article class="stat-card"><div class="stat-label">Total projects <span>▦</span></div><div class="stat-value" id="total-count">—</div><div class="stat-foot">Across your workspace</div></article>
+        <article class="stat-card"><div class="stat-label">In progress <span>◷</span></div><div class="stat-value" id="active-count">—</div><div class="stat-foot">Currently being worked on</div></article>
+        <article class="stat-card"><div class="stat-label">Needs attention <span>⚑</span></div><div class="stat-value" id="blocked-count">—</div><div class="stat-foot">Blocked or at risk</div></article>
+        <article class="stat-card"><div class="stat-label">Completed <span>✓</span></div><div class="stat-value" id="done-count">—</div><div class="stat-foot">Shipped and finished</div></article>
+      </section>
+
+      <section class="content-grid">
+        <div class="panel projects-panel">
+          <div class="panel-head"><div><div class="eyebrow">PORTFOLIO</div><h2 id="list-title">Project portfolio</h2></div><div class="filters"><input id="search" type="search" placeholder="Search projects…"><select id="status-filter" aria-label="Filter by status"><option value="all">All statuses</option><option>In progress</option><option>Planning</option><option>Blocked</option><option>Completed</option></select></div></div>
+          <div class="project-list" id="project-list"></div>
+        </div>
+        <aside class="right-column">
+          <div class="panel focus-panel"><div class="panel-head"><div><div class="eyebrow">THE NEXT MOVE</div><h2>Priority focus</h2></div><span class="spark">✳</span></div><div id="priority-list" class="priority-list"></div></div>
+          <div class="panel principle-panel"><div class="eyebrow">OUR DELIVERY RULE</div><h2>Finish what we start.</h2><div class="steps"><span class="step done">01 <b>Finish</b></span><i></i><span class="step">02 <b>Test</b></span><i></i><span class="step">03 <b>Deploy</b></span><i></i><span class="step">04 <b>Monetize</b></span></div><p>Limit active work. Complete, verify and launch before expanding.</p></div>
+        </aside>
+      </section>
+      <section class="panel roadmap-panel" id="roadmap-panel"><div class="panel-head"><div><div class="eyebrow">DELIVERY PIPELINE</div><h2>Project stages</h2></div></div><div class="pipeline"><div><span class="pipeline-dot planning"></span><b>Planning</b><strong id="pipe-planning">0</strong></div><div><span class="pipeline-dot progress"></span><b>In progress</b><strong id="pipe-progress">0</strong></div><div><span class="pipeline-dot blocked"></span><b>Blocked</b><strong id="pipe-blocked">0</strong></div><div><span class="pipeline-dot completed"></span><b>Completed</b><strong id="pipe-completed">0</strong></div></div></section>
+      <footer>SAHA WORKS <span>·</span> Built for clarity, execution and growth <span class="footer-right">Your workspace data is saved in this browser.</span></footer>
+    </main>
+  </div>
+
+  <dialog id="project-dialog">
+    <form id="project-form" method="dialog">
+      <div class="dialog-head"><div><div class="eyebrow">PORTFOLIO UPDATE</div><h2 id="dialog-title">Add a project</h2></div><button type="button" class="close-btn" id="close-dialog">×</button></div>
+      <input type="hidden" id="project-id">
+      <label>Project name<input id="project-name" required maxlength="70" placeholder="e.g. MboaAI Android"></label>
+      <label>Category<input id="project-category" maxlength="50" placeholder="AI, Hotel, Commerce…"></label>
+      <label>Short description<textarea id="project-description" rows="3" maxlength="220" placeholder="What are we building?"></textarea></label>
+      <div class="form-row"><label>Status<select id="project-status"><option>Planning</option><option>In progress</option><option>Blocked</option><option>Completed</option></select></label><label>Priority<select id="project-priority"><option>High</option><option>Medium</option><option>Low</option></select></label></div>
+      <label>Next action<input id="project-next" maxlength="120" placeholder="The next concrete step"></label>
+      <label>Repository / project link<input id="project-link" type="url" placeholder="https://github.com/…"></label>
+      <div class="dialog-actions"><button type="button" class="secondary-btn" id="delete-btn" hidden>Delete</button><button type="submit" class="primary-btn">Save project</button></div>
+    </form>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>
