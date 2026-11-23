@@ -1,3 +1,4 @@
+// OFP:E50C7B42F3A9618D04E6C25B7F1389A4
 const seedProjects = [
  {id:"saha-hotel-os",name:"SAHA HOTEL OS",category:"Hospitality · Cameroon",description:"Hotel operations platform for the 24-room SAHA HOTEL in Oyomabang, Yaoundé.",status:"In progress",priority:"High",next:"Reconnect Vercel deployment, verify owner bootstrap and run end-to-end hotel workflows.",link:"https://github.com/ZOUACEDRIC/saha-hotel-os",visibility:"Private",health:"Deployment not verified",owner:"ZOUACEDRIC"},
  {id:"mboaai",name:"MboaAI",category:"AI · Cameroon",description:"Independent Cameroon-focused AI assistant, knowledge platform and local-model initiative.",status:"In progress",priority:"High",next:"Verify a working model provider, user isolation, document processing and deployment.",link:"https://github.com/ZOUACEDRIC/MboaAI",visibility:"Private",health:"Integration testing required",owner:"ZOUACEDRIC"},
