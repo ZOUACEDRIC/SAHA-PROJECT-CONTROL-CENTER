@@ -18,7 +18,7 @@ Open `index.html` in a browser, or serve the folder with any static web server. 
 
 ## Deploy
 
-Deploy as a static site on GitHub Pages, Vercel, Netlify or another static host.
+Deploy as a static site on GitHub Pages, Vercel, Netlify or another static host. The repository includes a GitHub Actions workflow that publishes the root folder to GitHub Pages on every push to `main`.
 
 ## Data and security model — read before use
 
